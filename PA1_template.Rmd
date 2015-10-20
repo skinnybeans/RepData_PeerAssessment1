@@ -65,7 +65,7 @@ To show the average steps for each interval the data must be aggregated:
 The data can then be plotted in a time series graph.
 
 ```{R echo = TRUE}
-steps_per_interval <- aggregate(data$steps, by = list(data$interval), FUN='median', na.rm = TRUE)
+steps_per_interval <- aggregate(data$steps, by = list(data$interval), FUN='mean', na.rm = TRUE)
 names(steps_per_interval) <- c('interval','stepsmean')
 
 plot(x = steps_per_interval$interval,
@@ -197,7 +197,7 @@ Finally the data can be plotted.
 ```{R echo = TRUE}
 steps_per_interval <- aggregate(data_removena$steps, 
                                 by = list(data_removena$interval,data_removena$day_type),
-                                FUN='median', 
+                                FUN='mean', 
                                 na.rm = TRUE)
 
 names(steps_per_interval) <- c('interval','day_type','steps_average')

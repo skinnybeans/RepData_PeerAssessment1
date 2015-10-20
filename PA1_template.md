@@ -75,7 +75,7 @@ The data can then be plotted in a time series graph.
 
 
 ```r
-steps_per_interval <- aggregate(data$steps, by = list(data$interval), FUN='median', na.rm = TRUE)
+steps_per_interval <- aggregate(data$steps, by = list(data$interval), FUN='mean', na.rm = TRUE)
 names(steps_per_interval) <- c('interval','stepsmean')
 
 plot(x = steps_per_interval$interval,
@@ -99,7 +99,7 @@ steps_per_interval[steps_per_interval$stepsmean == max(steps_per_interval$stepsm
 ```
 
 ```
-## [1] 845
+## [1] 835
 ```
 
 
@@ -183,9 +183,9 @@ data_comparison
 ```
 
 ```
-##        Original    Filled
-## Mean   10766.19  9503.869
-## Median 10765.00 10395.000
+##        Original   Filled
+## Mean   10766.19 10766.19
+## Median 10765.00 10766.19
 ```
 
 ## Are there differences in activity patterns between weekdays and weekends?
@@ -231,7 +231,7 @@ Finally the data can be plotted.
 ```r
 steps_per_interval <- aggregate(data_removena$steps, 
                                 by = list(data_removena$interval,data_removena$day_type),
-                                FUN='median', 
+                                FUN='mean', 
                                 na.rm = TRUE)
 
 names(steps_per_interval) <- c('interval','day_type','steps_average')
